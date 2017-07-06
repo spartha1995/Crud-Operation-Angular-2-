@@ -26,6 +26,28 @@ namespace EmployeemanagementSystem.Controllers
 
         #region public API(s)
 
+        #region getDepartmentById
+
+        /**
+       * @api {get} api/department/:id
+       * @apiVersion 1.0.0
+       * @apiName GetDepartmentById
+       * @apiGroup Department
+       * @apiParam {int} id:UniquekeyofDepartment 
+       * HTTP/1.1 200 OK 
+       * {
+       *  "id": 1,
+       *  "depatmentName": "depatment_name",
+       *  "employee": null
+       * }
+       * @apiError UserNotFound department id not found.
+       * @apiErrorExample {json} Error-Response:
+       * HTTP/1.1 404 Not Found
+       * {
+       *   "error": "Department Not Found"
+       * }
+       */
+
         /// <summary>
         /// Method to get Department by id
         /// </summary>
@@ -34,8 +56,18 @@ namespace EmployeemanagementSystem.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetDepartmentById(int id)
         {
-            return Ok(await _departmentRepository.GetDepartmentAsnync(id));
+            var Department = await _departmentRepository.GetDepartmentAsnync(id);
+            if (Department == null)
+            {
+                return NotFound();
+            }
+            return Ok();
         }
+
+        #endregion
+
+        #region Get All Department
+
 
         /// <summary>
         /// Method to Get all Department
@@ -44,9 +76,16 @@ namespace EmployeemanagementSystem.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllDepartment()
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             var department = await _departmentRepository.GetAllDepartmentAsync();
             return Ok(department);
         }
+
+        #endregion
+
 
         /// <summary>
         /// Method to add Department

@@ -1,58 +1,10 @@
 [
   {
-    "type": "post",
-    "url": "api/department",
-    "title": "Add Department",
-    "version": "1.0.0",
-    "name": "Add_Department",
-    "group": "Department",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "object",
-            "optional": false,
-            "field": "Department",
-            "description": "<p>obj.</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "json",
-            "optional": false,
-            "field": "Department",
-            "description": "<p>HttpResponse 200 Ok [ { &quot;id&quot;: 1, &quot;depatmentName&quot;: &quot;Department 1&quot;, &quot;employee&quot;: null }, { &quot;id&quot;: 2, &quot;depatmentName&quot;: &quot;Department 2&quot;, &quot;employee&quot;: null } ]</p>"
-          }
-        ]
-      }
-    },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "Department",
-            "description": "<p>Internal Server Error</p>"
-          }
-        ]
-      }
-    },
-    "filename": "Controllers/DepartmentController.cs",
-    "groupTitle": "Department"
-  },
-  {
-    "type": "delete",
+    "type": "get",
     "url": "api/department/:id",
-    "title": "Delete Department",
+    "title": "",
     "version": "1.0.0",
-    "name": "Delete_Department",
+    "name": "GetDepartmentById",
     "group": "Department",
     "parameter": {
       "fields": {
@@ -61,21 +13,8 @@
             "group": "Parameter",
             "type": "int",
             "optional": false,
-            "field": "id",
-            "description": "<p>Department unique ID.</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "json",
-            "optional": false,
-            "field": "Department",
-            "description": "<p>HttpResponse 204 NoContent</p>"
+            "field": "id:UniquekeyofDepartment",
+            "description": "<p>HTTP/1.1 200 OK { &quot;id&quot;: 1, &quot;depatmentName&quot;: &quot;depatment_name&quot;, &quot;employee&quot;: null }</p>"
           }
         ]
       }
@@ -86,11 +25,18 @@
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "Department",
-            "description": "<p>The <code>id</code> of the Department was not found.</p>"
+            "field": "UserNotFound",
+            "description": "<p>department id not found.</p>"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 404 Not Found\n{\n  \"error\": \"Department Not Found\"\n}",
+          "type": "json"
+        }
+      ]
     },
     "filename": "Controllers/DepartmentController.cs",
     "groupTitle": "Department"
@@ -98,320 +44,30 @@
   {
     "type": "get",
     "url": "api/department",
-    "title": "Get All Department",
+    "title": "",
     "version": "1.0.0",
-    "name": "Get_All_Department",
-    "group": "Department",
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "json",
-            "optional": false,
-            "field": "Department",
-            "description": "<p>HttpResponse 200 Ok { &quot;id&quot;: 1, &quot;depatmentName&quot;: &quot;dept&quot;, &quot;employee&quot;: null }</p>"
-          }
-        ]
-      }
-    },
+    "name": "GetAllDepartment",
+    "group": "Department_HTTP_1_1_200_OK________id___1___depatmentName____Department_Name_1____employee___null_______id___2___depatmentName____Department_Name_2____employee___null______",
     "error": {
       "fields": {
         "Error 4xx": [
           {
             "group": "Error 4xx",
             "optional": false,
-            "field": "Department",
-            "description": "<p>BadRequest</p>"
+            "field": "Badrequest",
+            "description": "<p>Badrequest</p>"
           }
         ]
-      }
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP/1.1 400 Bad Request\n{\n  \"error\": \"400 Bad Request\"\n}",
+          "type": "json"
+        }
+      ]
     },
     "filename": "Controllers/DepartmentController.cs",
-    "groupTitle": "Department"
-  },
-  {
-    "type": "get",
-    "url": "api/department/:id",
-    "title": "Get Department By Id",
-    "version": "1.0.0",
-    "name": "Get_Department_By_Id",
-    "group": "Department",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "int",
-            "optional": false,
-            "field": "id",
-            "description": "<p>Department unique ID</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "json",
-            "optional": false,
-            "field": "Department",
-            "description": "<p>HttpResponse 200 Ok { &quot;id&quot;: 1, &quot;depatmentName&quot;: &quot;department&quot;, &quot;employee&quot;: null }</p>"
-          }
-        ]
-      }
-    },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "Department",
-            "description": "<p>The <code>id</code> of the Department was not found.</p>"
-          }
-        ]
-      }
-    },
-    "filename": "Controllers/DepartmentController.cs",
-    "groupTitle": "Department"
-  },
-  {
-    "type": "put",
-    "url": "api/department/:id",
-    "title": "Update Department",
-    "version": "1.0.0",
-    "name": "Update_Department",
-    "group": "Department",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "object",
-            "optional": false,
-            "field": "Department",
-            "description": "<p>.</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "json",
-            "optional": false,
-            "field": "Department",
-            "description": "<p>HttpResponse 200 Ok { &quot;id&quot;: 1, &quot;depatmentName&quot;: &quot;department update&quot;, &quot;employee&quot;: null }</p>"
-          }
-        ]
-      }
-    },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "Department",
-            "description": "<p>The <code>id</code> of the Department was not found.</p>"
-          }
-        ]
-      }
-    },
-    "filename": "Controllers/DepartmentController.cs",
-    "groupTitle": "Department"
-  },
-  {
-    "type": "post",
-    "url": "api/employee",
-    "title": "Add Employee",
-    "version": "1.0.0",
-    "name": "Add_Employee",
-    "group": "Employee",
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "json",
-            "optional": false,
-            "field": "Employee",
-            "description": "<p>HttpResponse 200 Ok { &quot;employeeId&quot;: 3, &quot;employeeName&quot;: &quot;Employee 3&quot;, &quot;departmentName&quot;: &quot;Department 1&quot; }</p>"
-          }
-        ]
-      }
-    },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "Employee",
-            "description": "<p>Internal Server Error</p>"
-          }
-        ]
-      }
-    },
-    "filename": "Controllers/EmployeeController.cs",
-    "groupTitle": "Employee"
-  },
-  {
-    "type": "delete",
-    "url": "api/employee/:id",
-    "title": "Delete Employee",
-    "version": "1.0.0",
-    "name": "Delete_Employee",
-    "group": "Employee",
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "json",
-            "optional": false,
-            "field": "Employee",
-            "description": "<p>HttpResponse 204 No Content</p>"
-          }
-        ]
-      }
-    },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "Employee",
-            "description": "<p>NotFound</p>"
-          }
-        ]
-      }
-    },
-    "filename": "Controllers/EmployeeController.cs",
-    "groupTitle": "Employee"
-  },
-  {
-    "type": "get",
-    "url": "api/employee",
-    "title": "Get All Employee",
-    "version": "1.0.0",
-    "name": "Get_All_Employee",
-    "group": "Employee",
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "json",
-            "optional": false,
-            "field": "Employee",
-            "description": "<p>HttpResponse 200 Ok { [ { &quot;employeeId&quot;: 1, &quot;employeeName&quot;: &quot;Employee 1&quot;, &quot;departmentName&quot;: &quot;Department 1&quot; }, { &quot;employeeId&quot;: 2, &quot;employeeName&quot;: &quot;Employee 2&quot;, &quot;departmentName&quot;: &quot;Department 2&quot; } ] }</p>"
-          }
-        ]
-      }
-    },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "Employee",
-            "description": "<p>Internal Server Error</p>"
-          }
-        ]
-      }
-    },
-    "filename": "Controllers/EmployeeController.cs",
-    "groupTitle": "Employee"
-  },
-  {
-    "type": "get",
-    "url": "api/employee/:id",
-    "title": "Get Employee By Id",
-    "version": "1.0.0",
-    "name": "Get_Employee_By_Id",
-    "group": "Employee",
-    "parameter": {
-      "fields": {
-        "Parameter": [
-          {
-            "group": "Parameter",
-            "type": "int",
-            "optional": false,
-            "field": "id",
-            "description": "<p>employee unique Id.</p>"
-          }
-        ]
-      }
-    },
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "json",
-            "optional": false,
-            "field": "Employee",
-            "description": "<p>HttpResponse 200 Ok { &quot;id&quot;: 1, &quot;employeeName&quot;: &quot;Employee 1&quot;, &quot;departmentId&quot;: 1, &quot;department&quot;: null }</p>"
-          }
-        ]
-      }
-    },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "Employee",
-            "description": "<p>The <code>id</code> of the Employee was not found.</p>"
-          }
-        ]
-      }
-    },
-    "filename": "Controllers/EmployeeController.cs",
-    "groupTitle": "Employee"
-  },
-  {
-    "type": "put",
-    "url": "api/employee/:id",
-    "title": "Update Employee",
-    "version": "1.0.0",
-    "name": "Update_Employee",
-    "group": "Employee",
-    "success": {
-      "fields": {
-        "Success 200": [
-          {
-            "group": "Success 200",
-            "type": "json",
-            "optional": false,
-            "field": "Employee",
-            "description": "<p>HttpResponse 200 Ok { &quot;employeeId&quot;: 1, &quot;employeeName&quot;: &quot;Employee Name Changed&quot;, &quot;departmentName&quot;: &quot;Department 1&quot; }</p>"
-          }
-        ]
-      }
-    },
-    "error": {
-      "fields": {
-        "Error 4xx": [
-          {
-            "group": "Error 4xx",
-            "optional": false,
-            "field": "Employee",
-            "description": "<p>404 Not Found</p>"
-          }
-        ]
-      }
-    },
-    "filename": "Controllers/EmployeeController.cs",
-    "groupTitle": "Employee"
+    "groupTitle": "Department_HTTP_1_1_200_OK________id___1___depatmentName____Department_Name_1____employee___null_______id___2___depatmentName____Department_Name_2____employee___null______"
   }
 ]

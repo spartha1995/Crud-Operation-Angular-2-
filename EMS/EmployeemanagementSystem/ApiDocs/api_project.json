@@ -1,13 +1,13 @@
 {
   "name": "",
   "version": "1.0.0",
-  "description": "Crud operation",
+  "description": "NO404 administration panel",
   "sampleUrl": false,
   "defaultVersion": "0.0.0",
   "apidoc": "0.3.0",
   "generator": {
     "name": "apidoc",
-    "time": "2017-07-01T10:31:33.725Z",
+    "time": "2017-07-06T10:54:41.734Z",
     "url": "http://apidocjs.com",
     "version": "0.17.6"
   }
