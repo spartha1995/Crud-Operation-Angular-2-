@@ -1,0 +1,8 @@
+language: csharp  
+sudo: required  
+dist: trusty 
+dotnet: 1.0.4 
+install:
+  - dotnet restore ./EMS/EmployeemanagementSystem.sln
+script:
+  - dotnet build ./EMS/EmployeemanagementSystem.sln

@@ -1,0 +1,15 @@
+﻿<table class="table" style="width:100%">
+    <tr>
+        <th>Name</th>
+        <th>Department Name</th>
+        <th>Delete</th>
+        <th>Edit</th>
+    </tr>
+    <tr style="text-align:center" *ngFor="let emp of employees">
+       <td>{{emp.employeeName}}</td>
+        <td>{{emp.departmentName}}</td>
+        <td><button value="Delete" (click)="deleteEmployee(emp.employeeId)">Delete</button></td>
+        <td><input type="button" value="Edit" (click)="updateDepartment(emp.employeeId)"></td>
+    </tr>
+</table>
+<input type="button" value="Add Employee" [routerLink]="['add']"/>

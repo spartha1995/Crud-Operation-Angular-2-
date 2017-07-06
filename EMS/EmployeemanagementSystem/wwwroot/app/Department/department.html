@@ -1,0 +1,17 @@
+﻿<label>Name: </label>
+<input type="text" placeholder="Enter Department Name" [(ngModel)]="departmentobj.depatmentName" class="form-control" required />
+<input type="button" *ngIf="isShown" value="Create" (click)="addDept()" />
+<input type="button" *ngIf="!isShown" value="Update" (click)="updatedDepartment()" /><br>
+<table class="table" style="width:100%">
+    <tr>
+        <th>Name</th>
+        <th>Delete</th>
+        <th>Edit</th>
+    </tr>
+    <tr style="text-align:center" *ngFor="let dept of departments">
+        <td>{{dept.depatmentName}}</td>
+        <td><button value="Delete" (click)="deleteDepartment(dept)">Delete</button></td>
+        <td><input type="button" value="Edit" (click)="updateDepartment(dept)"></td>
+    </tr>
+</table>
+<button value="employee Page" [routerLink]="['employee']">Click to redirect employee page</button>
