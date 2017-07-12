@@ -27,6 +27,8 @@ namespace EmployeemanagementSystem.Controllers
 
         #region Public API(s)
 
+        #region Get Employee by Id
+
         /// <summary>
         /// Method to get Employee by Id
         /// </summary>
@@ -38,6 +40,10 @@ namespace EmployeemanagementSystem.Controllers
             return Ok(await _employeeRepository.GetEmployeeAsync(id));
         }
 
+        #endregion
+
+        #region Get All Employee
+
         /// <summary>
         /// Method to get all Employee
         /// </summary>
@@ -47,6 +53,10 @@ namespace EmployeemanagementSystem.Controllers
         {
             return Ok(await _employeeRepository.GetAllAsync());
         }
+
+        #endregion
+
+        #region Add Employee
 
         /// <summary>
         /// Method to add Employee
@@ -64,6 +74,10 @@ namespace EmployeemanagementSystem.Controllers
             await _employeeRepository.AddEmployeeAsync(employee);
             return Ok();
         }
+
+        #endregion
+
+        #region Update Employee
 
         /// <summary>
         /// Method to update Employee
@@ -96,6 +110,10 @@ namespace EmployeemanagementSystem.Controllers
             }
         }
 
+        #endregion
+
+        #region Delete Employee
+
         /// <summary>
         /// Method to Delete Employee
         /// </summary>
@@ -116,6 +134,8 @@ namespace EmployeemanagementSystem.Controllers
             await _employeeRepository.DeleteEmployeeAsync(employeeToDelete);
             return NoContent();
         }
+
+        #endregion
 
         #endregion
     }

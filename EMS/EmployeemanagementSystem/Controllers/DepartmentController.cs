@@ -26,6 +26,25 @@ namespace EmployeemanagementSystem.Controllers
 
         #region public API(s)
 
+        #region Get Department By Id
+
+        /**
+         * @api {get} api/department/:id
+         * @apiVersion 1.0.0
+         * @apiName GetDepartmentById
+         * @apiGroup Department
+         * @apiParam {int} id
+         * @apiSuccessExample {json} Success-Response:
+         * HTTP/1.1 200 OK    
+         * {
+         * {
+         *"id": 1,
+         *"depatmentName": "Department Name",
+         *"employee": null
+         * }
+         * }
+        */
+
         /// <summary>
         /// Method to get Department by id
         /// </summary>
@@ -37,6 +56,38 @@ namespace EmployeemanagementSystem.Controllers
             return Ok(await _departmentRepository.GetDepartmentAsnync(id));
         }
 
+        #endregion
+
+        #region Get All Department
+
+        /**
+         * @api {get} api/department
+         * @apiVersion 1.0.0
+         * @apiName GetAllDepartment
+         * @apiGroup Department
+         * @apiSuccessExample {json} Success-Response:
+         * HTTP/1.1 200 OK    
+         * {
+         * [
+         * {
+         *     "id": 1,
+         *     "depatmentName": "Department Name",
+         *     "employee": null
+         * },
+         * {
+         *     "id": 2,
+         *     "depatmentName": "Department Name_2",
+         *     "employee": null
+         * },
+         * {
+         *     "id": 3,
+         *     "depatmentName": "Department Name_3",
+         *     "employee": null
+         * }
+         * ]
+         * }
+        */
+
         /// <summary>
         /// Method to Get all Department
         /// </summary>
@@ -47,6 +98,27 @@ namespace EmployeemanagementSystem.Controllers
             var department = await _departmentRepository.GetAllDepartmentAsync();
             return Ok(department);
         }
+
+        #endregion
+
+        #region Add Department
+
+        /**
+         * @api {post} api/department
+         * @apiVersion 1.0.0
+         * @apiName AddDepartment
+         * @apiGroup Department
+         * @apiParam {int} id
+         * @apiSuccessExample {json} Success-Response:
+         * HTTP/1.1 200 OK    
+         * {
+         * {
+         *"id": 1,
+         *"depatmentName": "Department Name",
+         *"employee": null
+         * }
+         * }
+        */
 
         /// <summary>
         /// Method to add Department
@@ -64,6 +136,10 @@ namespace EmployeemanagementSystem.Controllers
             await _departmentRepository.AddDepartmentAsync(department);
             return Ok(department);
         }
+
+        #endregion
+
+        #region Update Department
 
         /// <summary>
         /// Method to update Department
@@ -88,6 +164,10 @@ namespace EmployeemanagementSystem.Controllers
             return Ok();
         }
 
+        #endregion
+
+        #region Delete Department
+
         /// <summary>
         /// Method to delete Delete Department
         /// </summary>
@@ -108,6 +188,8 @@ namespace EmployeemanagementSystem.Controllers
             await _departmentRepository.DeleteDepartmentAsync(departmentToDelete);
             return NoContent();
         }
+
+        #endregion
 
         #endregion
     }
