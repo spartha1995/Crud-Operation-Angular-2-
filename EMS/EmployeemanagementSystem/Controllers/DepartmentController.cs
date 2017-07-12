@@ -26,6 +26,7 @@ namespace EmployeemanagementSystem.Controllers
 
         #region public API(s)
 
+
         #region Get Department By Id
 
         /**
@@ -53,12 +54,18 @@ namespace EmployeemanagementSystem.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetDepartmentById(int id)
         {
-            return Ok(await _departmentRepository.GetDepartmentAsnync(id));
+            var Department = await _departmentRepository.GetDepartmentAsnync(id);
+            if (Department == null)
+            {
+                return NotFound();
+            }
+            return Ok();
         }
 
         #endregion
 
         #region Get All Department
+
 
         /**
          * @api {get} api/department
@@ -95,11 +102,16 @@ namespace EmployeemanagementSystem.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllDepartment()
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             var department = await _departmentRepository.GetAllDepartmentAsync();
             return Ok(department);
         }
 
         #endregion
+
 
         #region Add Department
 
