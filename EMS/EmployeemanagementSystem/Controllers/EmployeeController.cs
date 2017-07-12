@@ -27,8 +27,6 @@ namespace EmployeemanagementSystem.Controllers
 
         #region Public API(s)
 
-        #region Get Employee by Id
-
         /// <summary>
         /// Method to get Employee by Id
         /// </summary>
@@ -86,7 +84,7 @@ namespace EmployeemanagementSystem.Controllers
         /// <param name="employee">Employee object</param>
         /// <returns>Employee object</returns>
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateEmployeeAsync(int id, [FromBody] Employee employee)
+        public async Task<IActionResult> UpdateEmployee(int id, [FromBody] Employee employee)
         {
             if (!ModelState.IsValid)
             {
@@ -120,7 +118,7 @@ namespace EmployeemanagementSystem.Controllers
         /// <param name="id">Id to delete Employee</param>
         /// <returns>204 if Success</returns>
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteEmployeeAsync(int id)
+        public async Task<IActionResult> DeleteEmployee(int id)
         {
             if (!ModelState.IsValid)
             {
