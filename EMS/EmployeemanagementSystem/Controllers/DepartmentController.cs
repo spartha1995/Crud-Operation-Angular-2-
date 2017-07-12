@@ -26,27 +26,7 @@ namespace EmployeemanagementSystem.Controllers
 
         #region public API(s)
 
-        #region getDepartmentById
-
-        /**
-       * @api {get} api/department/:id
-       * @apiVersion 1.0.0
-       * @apiName GetDepartmentById
-       * @apiGroup Department
-       * @apiParam {int} id:UniquekeyofDepartment 
-       * HTTP/1.1 200 OK 
-       * {
-       *  "id": 1,
-       *  "depatmentName": "depatment_name",
-       *  "employee": null
-       * }
-       * @apiError UserNotFound department id not found.
-       * @apiErrorExample {json} Error-Response:
-       * HTTP/1.1 404 Not Found
-       * {
-       *   "error": "Department Not Found"
-       * }
-       */
+        #region Get Department By Id
 
         /// <summary>
         /// Method to get Department by id
@@ -56,18 +36,12 @@ namespace EmployeemanagementSystem.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetDepartmentById(int id)
         {
-            var Department = await _departmentRepository.GetDepartmentAsnync(id);
-            if (Department == null)
-            {
-                return NotFound();
-            }
-            return Ok();
+            return Ok(await _departmentRepository.GetDepartmentAsnync(id));
         }
 
         #endregion
 
         #region Get All Department
-
 
         /// <summary>
         /// Method to Get all Department
@@ -76,15 +50,13 @@ namespace EmployeemanagementSystem.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllDepartment()
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
             var department = await _departmentRepository.GetAllDepartmentAsync();
             return Ok(department);
         }
 
         #endregion
+
+        #region Add Department
 
 
         /// <summary>
@@ -103,6 +75,10 @@ namespace EmployeemanagementSystem.Controllers
             await _departmentRepository.AddDepartmentAsync(department);
             return Ok(department);
         }
+
+        #endregion
+
+        #region Update Department
 
         /// <summary>
         /// Method to update Department
@@ -127,6 +103,10 @@ namespace EmployeemanagementSystem.Controllers
             return Ok();
         }
 
+        #endregion
+
+        #region Delete Department
+
         /// <summary>
         /// Method to delete Delete Department
         /// </summary>
@@ -147,6 +127,8 @@ namespace EmployeemanagementSystem.Controllers
             await _departmentRepository.DeleteDepartmentAsync(departmentToDelete);
             return NoContent();
         }
+
+        #endregion
 
         #endregion
     }

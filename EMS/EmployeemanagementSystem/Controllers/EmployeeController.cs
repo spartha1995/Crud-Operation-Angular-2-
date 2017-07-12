@@ -27,8 +27,6 @@ namespace EmployeemanagementSystem.Controllers
 
         #region Public API(s)
 
-        #region Get Employee By Id
-
         /// <summary>
         /// Method to get Employee by Id
         /// </summary>
