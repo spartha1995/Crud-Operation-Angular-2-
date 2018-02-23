@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@types/core-js": "0.9.46",
-    "@types/node": "9.4.0",
+    "@types/node": "9.4.6",
     "concurrently": "3.5.1",
     "typescript": "2.7.2",
     "typings": "2.1.1"
